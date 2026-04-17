@@ -1,0 +1,224 @@
+@import 'tailwindcss';
+
+@import 'tw-animate-css';
+@import '@fontsource/cabin';
+
+@source '../views';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+    --font-sans:
+        'Cabin', ui-sans-serif, system-ui, sans-serif,
+        'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+        'Noto Color Emoji';
+    --font-display:
+        'Outfit', 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+    --radius-lg: var(--radius);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-sm: calc(var(--radius) - 4px);
+
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+    --color-sidebar: var(--sidebar);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+
+    /* T2R — Ultra Modern SaaS */
+    --color-t2r-green: #00E59B;
+    --color-t2r-green-light: #6EE7B7;
+    --color-t2r-green-dark: #047857;
+    --color-t2r-dark: #09090B;
+    --color-t2r-dark-deep: #000000;
+    --color-t2r-dark-footer: #050505;
+    --color-t2r-text: #171717;
+    --color-t2r-text-light: #52525B;
+    --color-t2r-text-muted: #A1A1AA;
+
+    /* Animations */
+    --animate-fade-in: fade-in 0.5s ease-out forwards;
+    --animate-fade-in-up: fade-in-up 0.5s ease-out forwards;
+    --animate-marquee: marquee 40s linear infinite;
+    --animate-blob: blob 7s infinite;
+    --animate-gradient: gradient 8s linear infinite;
+}
+
+:root {
+    --background: #ffffff;
+    --foreground: #09090b;
+    --card: #ffffff;
+    --card-foreground: #09090b;
+    --popover: #ffffff;
+    --popover-foreground: #09090b;
+    --primary: #00E59B;
+    --primary-foreground: #000000;
+    --secondary: #f4f4f5;
+    --secondary-foreground: #09090b;
+    --muted: #f4f4f5;
+    --muted-foreground: #71717a;
+    --accent: #f4f4f5;
+    --accent-foreground: #09090b;
+    --destructive: #dc2626;
+    --destructive-foreground: #ffffff;
+    --border: #e4e4e7;
+    --input: #e4e4e7;
+    --ring: #00E59B;
+    --radius: 0.5rem;
+    --chart-1: #00E59B;
+    --chart-2: #6EE7B7;
+    --chart-3: #047857;
+    --chart-4: #0a0a0a;
+    --chart-5: #18181b;
+    --sidebar: #ffffff;
+    --sidebar-foreground: #09090b;
+    --sidebar-primary: #00E59B;
+    --sidebar-primary-foreground: #000000;
+    --sidebar-accent: #f4f4f5;
+    --sidebar-accent-foreground: #09090b;
+    --sidebar-border: #e4e4e7;
+    --sidebar-ring: #00E59B;
+}
+
+.dark {
+    --background: #09090b;
+    --foreground: #ffffff;
+    --card: #0a0a0a;
+    --card-foreground: #ffffff;
+    --popover: #0a0a0a;
+    --popover-foreground: #ffffff;
+    --primary: #00E59B;
+    --primary-foreground: #000000;
+    --secondary: #18181b;
+    --secondary-foreground: #ffffff;
+    --muted: #18181b;
+    --muted-foreground: #a1a1aa;
+    --accent: #18181b;
+    --accent-foreground: #ffffff;
+    --destructive: #dc2626;
+    --destructive-foreground: #ffffff;
+    --border: rgba(255, 255, 255, 0.05);
+    --input: rgba(255, 255, 255, 0.1);
+    --ring: #00E59B;
+    --chart-1: #00E59B;
+    --chart-2: #6EE7B7;
+    --chart-3: #047857;
+    --chart-4: #0a0a0a;
+    --chart-5: #18181b;
+    --sidebar: #0a0a0a;
+    --sidebar-foreground: #ffffff;
+    --sidebar-primary: #00E59B;
+    --sidebar-primary-foreground: #000000;
+    --sidebar-accent: #18181b;
+    --sidebar-accent-foreground: #ffffff;
+    --sidebar-border: rgba(255, 255, 255, 0.05);
+    --sidebar-ring: #00E59B;
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+    body {
+        @apply bg-background text-foreground;
+    }
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+/* Keyframes */
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+@keyframes blob {
+    0% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+    100% { transform: translate(0px, 0px) scale(1); }
+}
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+@keyframes scan {
+    0%, 100% { top: 0%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+@keyframes radar {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/*
+ * Hexagonal pattern matching the original T2R website.
+ * The original uses a light gray hexagonal/honeycomb pattern overlay on dark sections.
+ */
+@layer utilities {
+    .hex-pattern {
+        background-color: #09090B;
+        background-image: 
+            radial-gradient(circle at center, rgba(0, 229, 155, 0.05) 0%, transparent 70%),
+            linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8)),
+            url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-dark {
+        background-color: #000000;
+        background-image: radial-gradient(circle at top right, rgba(0, 229, 155, 0.15), transparent 40%),
+          radial-gradient(circle at bottom left, rgba(0, 229, 155, 0.1), transparent 40%);
+    }
+    .section-white {
+        @apply bg-white;
+    }
+    .section-gray {
+        background-color: #f7f7f7;
+    }
+    .animate-marquee {
+        animation: marquee 40s linear infinite;
+    }
+}
