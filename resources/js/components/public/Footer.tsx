@@ -1,7 +1,25 @@
-import { Link } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
+import type { FooterData } from '@/types/t2r';
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
+    const { footerData } = usePage<{ footerData?: FooterData }>().props;
+    
+    // Fallbacks to avoid breaking if DB is empty
+    const settings = footerData?.settings || {
+        address: 'Avenida Da Saudade, 535, Sala 86 – Parque Empresarial, Presidente Prudente/SP',
+        facebook_url: 'https://www.facebook.com/t2r.tech/',
+        instagram_url: 'https://www.instagram.com/t2r.tech/',
+        linkedin_url: 'https://br.linkedin.com/company/t2r-tech',
+        youtube_url: 'https://youtube.com/channel/UCtllmmwN6VkcN-ItYqb2jiQ'
+    };
+
+    const departmentsArray = Array.isArray(footerData?.departments) ? footerData.departments : [];
+    const departments = departmentsArray.length ? departmentsArray : [
+        { name: 'Comercial', whatsapp: '5518996131404', email: 'contato@t2rtecnologia.com.br' },
+        { name: 'Adm / Financeiro', whatsapp: '5518997749080', email: 'adm@t2rtecnologia.com.br' },
+        { name: 'Suporte Técnico', whatsapp: '5518997216319', email: 'suporte@t2rtecnologia.com.br' }
+    ];
 
     return (
         <footer className="bg-[#050505] text-white">
@@ -17,10 +35,10 @@ export default function Footer() {
                             cartografia, fotogrametria e levantamentos com precisão centimétrica.
                         </p>
                         <div className="mt-6 flex items-center gap-3">
-                            <SocialLink href="https://www.instagram.com/t2r.tech/" label="Instagram" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
-                            <SocialLink href="https://www.facebook.com/t2r.tech/" label="Facebook" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                            <SocialLink href="https://br.linkedin.com/company/t2r-tech" label="LinkedIn" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                            <SocialLink href="https://youtube.com/channel/UCtllmmwN6VkcN-ItYqb2jiQ" label="YouTube" d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                            {settings.instagram_url && <SocialLink href={settings.instagram_url} label="Instagram" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />}
+                            {settings.facebook_url && <SocialLink href={settings.facebook_url} label="Facebook" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />}
+                            {settings.linkedin_url && <SocialLink href={settings.linkedin_url} label="LinkedIn" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />}
+                            {settings.youtube_url && <SocialLink href={settings.youtube_url} label="YouTube" d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />}
                         </div>
                     </div>
 
@@ -36,37 +54,21 @@ export default function Footer() {
                         </ul>
                     </div>
 
-                    {/* Comercial */}
-                    <div>
-                        <h3 className="mb-4 text-xs font-bold tracking-widest text-white/40 uppercase">Comercial</h3>
-                        <div className="space-y-2 text-sm text-white/60">
-                            <a href="https://wa.me/5518996131404" target="_blank" rel="noopener noreferrer" className="block hover:text-white transition-colors">+55 18 99613-1404</a>
-                            <a href="mailto:contato@t2rtecnologia.com.br" className="block hover:text-white transition-colors">contato@t2rtecnologia.com.br</a>
+                    {/* Departamentos */}
+                    {departments.map((dept: any, idx: number) => (
+                        <div key={idx}>
+                            <h3 className="mb-4 text-xs font-bold tracking-widest text-white/40 uppercase">{dept.name}</h3>
+                            <div className="space-y-2 text-sm text-white/60">
+                                {dept.whatsapp && <a href={`https://wa.me/${(dept.whatsapp || '').replace(/\D/g, '')}`} target="_blank" rel="noopener noreferrer" className="block hover:text-white transition-colors">{dept.whatsapp}</a>}
+                                {dept.email && <a href={`mailto:${dept.email}`} className="block hover:text-white transition-colors">{dept.email}</a>}
+                            </div>
                         </div>
-                    </div>
-
-                    {/* Adm / Financeiro */}
-                    <div>
-                        <h3 className="mb-4 text-xs font-bold tracking-widest text-white/40 uppercase">Adm / Financeiro</h3>
-                        <div className="space-y-2 text-sm text-white/60">
-                            <a href="https://wa.me/5518997749080" target="_blank" rel="noopener noreferrer" className="block hover:text-white transition-colors">+55 18 99774-9080</a>
-                            <a href="mailto:adm@t2rtecnologia.com.br" className="block hover:text-white transition-colors">adm@t2rtecnologia.com.br</a>
-                        </div>
-                    </div>
-
-                    {/* Suporte */}
-                    <div>
-                        <h3 className="mb-4 text-xs font-bold tracking-widest text-white/40 uppercase">Suporte Técnico</h3>
-                        <div className="space-y-2 text-sm text-white/60">
-                            <a href="https://wa.me/5518997216319" target="_blank" rel="noopener noreferrer" className="block hover:text-white transition-colors">+55 18 99721-6319</a>
-                            <a href="mailto:suporte@t2rtecnologia.com.br" className="block hover:text-white transition-colors">suporte@t2rtecnologia.com.br</a>
-                        </div>
-                    </div>
+                    ))}
                 </div>
 
                 {/* Bottom */}
                 <div className="mt-14 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-8 text-xs text-white/40 md:flex-row">
-                    <p>Avenida Da Saudade, 535, Sala 86 – Parque Empresarial, Presidente Prudente/SP</p>
+                    <p>{settings.address}</p>
                     <p>Copyright © {currentYear} – T2R Soluções Tecnológicas</p>
                 </div>
             </div>

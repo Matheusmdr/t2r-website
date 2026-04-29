@@ -29,7 +29,9 @@ export default function Metashape() {
             {/* 1. HERO MASSIVE BLACK */}
             <section className="relative w-full bg-white dark:bg-black pt-40 pb-24 sm:pt-48 sm:pb-32 overflow-hidden selection:bg-blue-400 selection:text-white dark:selection:text-black border-b border-black/10 dark:border-white/5 opacity-0 animate-[fade-in_1s_ease-out_forwards]">
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(96,165,250,0.08),transparent_50%)] pointer-events-none" />
+                {/* Scan line removed — kept for reversion:
                 <div className="absolute flex gap-4 top-1/4 -left-10 w-[200%] h-[1px] bg-gradient-to-r from-transparent via-blue-500/30 to-transparent animate-[radar_6s_linear_infinite] opacity-50 origin-bottom-right" />
+                */}
                 
                 <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6">
                     <div className="inline-flex items-center gap-2 rounded-full border border-blue-400/30 bg-blue-400/10 px-3 py-1 text-xs font-mono text-blue-400 mb-6 uppercase tracking-widest opacity-0 animate-[fade-in-up_0.8s_ease-out_0.2s_forwards]">

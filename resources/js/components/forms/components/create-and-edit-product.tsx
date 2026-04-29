@@ -18,7 +18,8 @@ import {
 import { Product, ProductCategory } from '@/types';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { router } from '@inertiajs/react';
-import { useForm } from 'react-hook-form';
+import { useForm, useFieldArray } from 'react-hook-form';
+import { Plus, Trash2 } from 'lucide-react';
 import { toast } from 'sonner';
 import { z } from 'zod';
 import { MdEditorField } from './fields/md-editor-field';
@@ -53,6 +54,12 @@ const productSchema = z.object({
     return !isNaN(parsed) && parsed >= 0;
   }, 'O preço deve ser maior ou igual a 0'),
   tags: z.string().optional(),
+  tech_specs: z.array(
+    z.object({
+      key: z.string().min(1, 'Chave obrigatória'),
+      value: z.string().min(1, 'Valor obrigatório'),
+    })
+  ).optional(),
 });
 
 export function CreateAndEditProduct({
@@ -80,7 +87,15 @@ export function CreateAndEditProduct({
         : [],
       is_active: data?.is_active ?? true,
       price: String(data?.price ?? '0'),
+      tech_specs: data?.tech_specs 
+        ? Object.entries(data.tech_specs).map(([key, value]) => ({ key, value: String(value) }))
+        : [],
     },
+  });
+
+  const { fields: techSpecsFields, append: appendTechSpec, remove: removeTechSpec } = useFieldArray({
+    control: form.control as any,
+    name: "tech_specs"
   });
 
   function onSubmit(values: z.infer<typeof productSchema>) {
@@ -90,13 +105,17 @@ export function CreateAndEditProduct({
       ?.map((g) => g.file)
       .filter((f): f is File => f !== undefined);
 
-    console.log(newGalleryFiles);
+    const techSpecsObject = values.tech_specs?.reduce((acc, curr) => {
+      acc[curr.key] = curr.value;
+      return acc;
+    }, {} as Record<string, string>);
 
     router.post(url, {
       ...values,
       cover_image: values.coverImage.file,
       price: Number(values.price),
       gallery_images: newGalleryFiles,
+      tech_specs: techSpecsObject,
       tags: values.tags?.split(',').map((tag) => tag.trim()),
       _method: data ? 'put' : 'post',
     });
@@ -236,6 +255,59 @@ export function CreateAndEditProduct({
             label="Galeria de Imagens"
             onRemove={handleDeleteGalleryImage}
           />
+        </div>
+
+        <div className="space-y-4 rounded-xl border border-border p-4 bg-muted/20">
+          <div>
+            <h3 className="text-sm font-semibold">Especificações Técnicas</h3>
+            <p className="text-xs text-muted-foreground">
+              Adicione chaves e valores para as características (Ex: chave: "frequencias", valor: "L1/L2").
+              Drones PPK exigem chaves exatas: "frequencias", "canais", "linhaBase" para renderização correta do painel rápido.
+            </p>
+          </div>
+          
+          {techSpecsFields.map((field, index) => (
+            <div key={field.id} className="flex items-start gap-2">
+              <FormField
+                control={form.control as any}
+                name={`tech_specs.${index}.key`}
+                render={({ field }) => (
+                  <FormItem className="flex-1">
+                    <FormControl>
+                      <Input placeholder="Chave (Ex: frequencias, bateria)" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control as any}
+                name={`tech_specs.${index}.value`}
+                render={({ field }) => (
+                  <FormItem className="flex-1">
+                    <FormControl>
+                      <Input placeholder="Valor (Ex: L1/L2, 5000mAh)" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <Button type="button" variant="destructive" size="icon" onClick={() => removeTechSpec(index)}>
+                <Trash2 className="h-4 w-4" />
+              </Button>
+            </div>
+          ))}
+          
+          <Button 
+            type="button" 
+            variant="outline" 
+            size="sm" 
+            className="mt-2"
+            onClick={() => appendTechSpec({ key: '', value: '' })}
+          >
+            <Plus className="h-4 w-4 mr-2" />
+            Adicionar Especificação
+          </Button>
         </div>
 
         <MdEditorField

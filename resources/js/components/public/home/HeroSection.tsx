@@ -15,19 +15,20 @@ export default function HeroSection() {
         <section className="relative w-full bg-white dark:bg-black min-h-screen pt-28 pb-16 flex flex-col font-sans selection:bg-t2r-green selection:text-white dark:selection:text-black">
             {/* Absolute Ambient Background */}
             <div className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80 pointer-events-none" aria-hidden="true">
-                <div className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-t2r-green to-cyan-500 opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" style={{clipPath: 'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)'}}></div>
+                <div className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-t2r-green to-cyan-500 opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" style={{ clipPath: 'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)' }}></div>
             </div>
 
             <div className="max-w-[1400px] mx-auto px-4 sm:px-6 w-full flex-1 flex flex-col relative z-10">
 
                 {/* Main Bento Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-4 lg:gap-6 flex-1 opacity-0 animate-[fade-in_1s_ease-out_forwards]">
-                    
+
                     {/* Block 1: Massive Main Value Prop */}
                     <div className="group relative md:col-span-12 lg:col-span-8 bg-white dark:bg-[#0a0a0a] border border-black/20 dark:border-white/10 rounded-3xl p-8 sm:p-12 overflow-hidden flex flex-col justify-end min-h-[450px] opacity-0 animate-[fade-in-up_0.8s_ease-out_0.2s_forwards]">
-                        {/* Scanning Laser Line */}
+                        {/* Scanning Laser Line — removed, kept for reversion:
                         <div className="absolute left-0 right-0 h-[2px] bg-t2r-green shadow-[0_0_20px_4px_rgba(0,229,155,0.4)] animate-[scan_4s_ease-in-out_infinite]" />
-                        
+                        */}
+
                         {/* Tech Grid Background inside card */}
                         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:30px_30px] opacity-40 [mask-image:radial-gradient(ellipse_60%_60%_at_50%_0%,#000_10%,transparent_100%)] pointer-events-none" />
 
@@ -45,7 +46,7 @@ export default function HeroSection() {
                             <p className="text-base text-black/80 dark:text-white/50 max-w-2xl font-light mb-8">
                                 Tecnologia PPK para correção de trajetória GNSS após o voo, reduzindo a necessidade de GCP e aumentando a confiabilidade do levantamento.
                             </p>
-                            
+
                             <div className="flex flex-wrap items-center gap-4 mt-2">
                                 <Link href="/fale-conosco" className="relative group/btn overflow-hidden rounded-full bg-black text-white dark:bg-white dark:text-black px-8 py-4 font-bold text-lg transition-transform hover:scale-105 active:scale-95 shadow-lg dark:shadow-[0_0_20px_rgba(255,255,255,0.2)]">
                                     <span className="relative z-10">Solicitar Orçamento</span>
@@ -59,7 +60,7 @@ export default function HeroSection() {
 
                         {/* Corner Accents */}
                         <div className="absolute top-4 right-4 text-black dark:text-white/20">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M24 0v2h-2v2h-2v2h-2v2h-2V6h2V4h2V2h2V0h2z" fill="currentColor"/></svg>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M24 0v2h-2v2h-2v2h-2v2h-2V6h2V4h2V2h2V0h2z" fill="currentColor" /></svg>
                         </div>
                     </div>
 
@@ -70,22 +71,22 @@ export default function HeroSection() {
                             <div className="absolute w-[80%] h-[80%] rounded-full border border-black/10 dark:border-white/5" />
                             <div className="absolute w-[60%] h-[60%] rounded-full border border-black/10 dark:border-white/5" />
                             <div className="absolute w-[40%] h-[40%] rounded-full border border-t2r-green/10" />
-                            
+
                             {/* Crosshairs */}
                             <div className="absolute w-full h-[1px] bg-black/5 dark:bg-white/5" />
                             <div className="absolute h-full w-[1px] bg-black/5 dark:bg-white/5" />
 
                             {/* Radar sweep */}
                             <div className="absolute w-[50%] h-[50%] top-0 left-[50%] origin-bottom-left animate-[radar_3s_linear_infinite] overflow-hidden mix-blend-screen" style={{ background: 'conic-gradient(from 180deg at 0% 100%, transparent, rgba(0,229,155,0.4))' }}></div>
-                            
+
                             {/* Target points */}
                             <div className="absolute w-2 h-2 rounded-full bg-t2r-green top-1/4 left-1/3 shadow-[0_0_10px_rgba(0,229,155,1)]" />
                             <div className="absolute w-1.5 h-1.5 rounded-full bg-cyan-400 bottom-1/3 right-1/4 shadow-[0_0_8px_rgba(34,211,238,1)]" />
                             <div className="absolute w-1 h-1 rounded-full bg-white top-[60%] left-[20%]" />
-                            
+
                             <div className="relative z-10 font-mono text-xl font-black text-black dark:text-white bg-white dark:bg-black/60 px-4 py-1 rounded-full backdrop-blur-sm border border-black/20 dark:border-white/10 shadow-2xl">PPK</div>
                         </div>
-                        
+
                         <div className="mt-8 text-center w-full">
                             <div className="text-3xl font-black text-black dark:text-white tracking-tight">MULTI-GNSS</div>
                             <div className="text-sm text-t2r-green font-mono uppercase tracking-widest mt-1">Conexão Estável</div>
@@ -95,7 +96,7 @@ export default function HeroSection() {
                     {/* Block 3: Stats / Data Points */}
                     <div className="md:col-span-6 lg:col-span-4 bg-white dark:bg-[#0a0a0a] border border-black/20 dark:border-white/10 rounded-3xl p-6 lg:p-8 relative group hover:border-t2r-green/50 transition-colors overflow-hidden opacity-0 animate-[fade-in-up_0.8s_ease-out_0.6s_forwards]">
                         <div className="absolute right-0 top-0 w-32 h-32 bg-t2r-green/10 blur-[50px] group-hover:bg-t2r-green/20 transition-all pointer-events-none" />
-                        
+
                         <div className="flex flex-col h-full justify-between relative z-10">
                             <div className="flex justify-between items-start">
                                 <div className="text-black dark:text-white/40 font-mono text-xs uppercase tracking-widest">Avaliação Média</div>
@@ -105,7 +106,7 @@ export default function HeroSection() {
                             </div>
                             <div>
                                 <div className="text-[5rem] font-bold text-black dark:text-white leading-none tracking-tighter group-hover:text-t2r-green transition-colors mt-8">4.9<span className="text-3xl text-black dark:text-white/20 tracking-normal">/5</span></div>
-                                <div className="mt-3 text-black/80 dark:text-white/50 text-sm font-medium">No Google Review Brasil.<br/>Baseado em operações reais.</div>
+                                <div className="mt-3 text-black/80 dark:text-white/50 text-sm font-medium">No Google Review Brasil.<br />Baseado em operações reais.</div>
                             </div>
                         </div>
                     </div>
@@ -124,8 +125,8 @@ export default function HeroSection() {
                             </div>
                             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
                                 <div className="w-12 h-12 rounded-full bg-black/5 dark:bg-white/5 border border-black/20 dark:border-white/10 flex items-center justify-center shrink-0 relative overflow-hidden">
-                                     <div className="absolute inset-x-0 bottom-0 h-1/2 bg-cyan-400/20" />
-                                     <svg className="w-5 h-5 text-black dark:text-white relative z-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5" /></svg>
+                                    <div className="absolute inset-x-0 bottom-0 h-1/2 bg-cyan-400/20" />
+                                    <svg className="w-5 h-5 text-black dark:text-white relative z-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5" /></svg>
                                 </div>
                                 <div>
                                     <div className="font-bold text-black dark:text-white text-lg">Compatibilidade</div>
@@ -134,7 +135,7 @@ export default function HeroSection() {
                             </div>
                             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 group cursor-default">
                                 <div className="w-12 h-12 rounded-full bg-black/5 dark:bg-white/5 border border-black/20 dark:border-white/10 flex items-center justify-center shrink-0 transition-transform group-hover:-translate-y-1">
-                                   <svg className="w-5 h-5 text-t2r-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                                    <svg className="w-5 h-5 text-t2r-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                                 </div>
                                 <div>
                                     <div className="font-bold text-black dark:text-white text-lg">Suporte Técnico</div>
@@ -143,10 +144,10 @@ export default function HeroSection() {
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
-            
+
             {/* Base gradient to blend into next section */}
             <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white dark:from-black to-transparent pointer-events-none z-0" />
         </section>

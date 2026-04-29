@@ -1,0 +1,1 @@
+import{n as e,t}from"./jsx-runtime-DC_atMmC.js";import{t as n}from"./app-layout-BdJTK917.js";import{t as r}from"./create-and-edit-post-BbaCSZ8B.js";var i=e(),a=t();function o(e){let t=(0,i.c)(2),{post:o}=e,s;return t[0]===o?s=t[1]:(s=(0,a.jsx)(n,{children:(0,a.jsx)(`div`,{className:`p-4`,children:(0,a.jsx)(r,{data:o})})}),t[0]=o,t[1]=s),s}export{o as default};

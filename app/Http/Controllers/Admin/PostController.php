@@ -13,16 +13,16 @@ class PostController extends Controller
 {
     public function indexPublic()
     {
-        return Inertia::render('blog/index', [
-            'posts' => Post::latest()->paginate(9),
+        return Inertia::render('blog', [
+            'posts' => Post::where('is_published', true)->latest()->paginate(9),
         ]);
     }
 
     public function showPublic(string $postSlug)
     {
-        $post = Post::where('slug', $postSlug)->firstOrFail();
-        $relatedPosts = Post::where('id', '!=', $post->id)->latest()->take(3)->get();
-        return Inertia::render('blog/show', [
+        $post = Post::where('slug', $postSlug)->where('is_published', true)->firstOrFail();
+        $relatedPosts = Post::where('id', '!=', $post->id)->where('is_published', true)->latest()->take(3)->get();
+        return Inertia::render('blog-post', [
             'post' => $post,
             'relatedPosts' => $relatedPosts,
         ]);

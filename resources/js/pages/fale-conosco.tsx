@@ -1,9 +1,24 @@
 import { useState } from 'react';
 import PublicLayout from '@/layouts/public-layout';
+import { usePage } from '@inertiajs/react';
+import type { FooterData } from '@/types/t2r';
 
 export default function FaleConosco() {
     const [submitting, setSubmitting] = useState(false);
     const [success, setSuccess] = useState(false);
+
+    const { footerData } = usePage<{ footerData?: FooterData }>().props;
+
+    const settings = footerData?.settings || {
+        address: 'Avenida Da Saudade, 535, Sala 86 – Parque Empresarial, Presidente Prudente / SP',
+    };
+
+    const departmentsArray = Array.isArray(footerData?.departments) ? footerData.departments : [];
+    const departments = departmentsArray.length ? departmentsArray : [
+        { name: 'Setor Comercial', whatsapp: '+55 18 99613-1404', email: 'contato@t2rtecnologia.com.br' },
+        { name: 'Administrativo', whatsapp: '+55 18 99774-9080', email: 'adm@t2rtecnologia.com.br' },
+        { name: 'Suporte Técnico', whatsapp: '+55 18 99721-6319', email: 'suporte@t2rtecnologia.com.br' }
+    ];
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -17,7 +32,6 @@ export default function FaleConosco() {
             {/* 1. HERO MASSIVE BLACK */}
             <section className="relative w-full bg-white dark:bg-black pt-40 pb-24 sm:pt-48 sm:pb-32 overflow-hidden selection:bg-t2r-green selection:text-white dark:selection:text-black border-b border-black/10 dark:border-white/5 opacity-0 animate-[fade-in_1s_ease-out_forwards]">
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(0,229,155,0.08),transparent_50%)] pointer-events-none" />
-                <div className="absolute top-1/2 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-t2r-green/30 to-transparent animate-[scan_6s_ease-in-out_infinite]" />
                 
                 <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6">
                     <div className="inline-flex items-center gap-2 rounded-full border border-t2r-green/30 bg-t2r-green/10 px-3 py-1 text-xs font-mono text-t2r-green mb-6 uppercase tracking-widest opacity-0 animate-[fade-in-up_0.8s_ease-out_0.2s_forwards]">
@@ -41,32 +55,22 @@ export default function FaleConosco() {
                                 <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,1)]" />
                                 <h4 className="text-sm font-bold text-black dark:text-white uppercase tracking-wider">Endereço Base</h4>
                             </div>
-                            <p className="text-sm text-black/80 dark:text-white/50 leading-relaxed font-light">Avenida Da Saudade, 535, Sala 86<br/>Presidente Prudente / SP</p>
+                            <p className="text-sm text-black/80 dark:text-white/50 leading-relaxed font-light">{settings.address}</p>
                         </div>
-                        <div>
-                            <div className="flex items-center gap-2 mb-3">
-                                <span className="w-1.5 h-1.5 rounded-full bg-t2r-green shadow-[0_0_8px_rgba(0,229,155,1)]" />
-                                <h4 className="text-sm font-bold text-black dark:text-white uppercase tracking-wider">Setor Comercial</h4>
-                            </div>
-                            <p className="text-sm font-mono text-black/80 dark:text-white/50 mb-1">+55 18 99613-1404</p>
-                            <p className="text-sm text-t2r-green font-light">contato@t2rtecnologia.com.br</p>
-                        </div>
-                        <div>
-                            <div className="flex items-center gap-2 mb-3">
-                                <span className="w-1.5 h-1.5 rounded-full bg-white/50" />
-                                <h4 className="text-sm font-bold text-black dark:text-white uppercase tracking-wider">Administrativo</h4>
-                            </div>
-                            <p className="text-sm font-mono text-black/80 dark:text-white/50 mb-1">+55 18 99774-9080</p>
-                            <p className="text-sm text-black/80 dark:text-white/50 font-light">adm@t2rtecnologia.com.br</p>
-                        </div>
-                        <div>
-                            <div className="flex items-center gap-2 mb-3">
-                                <span className="w-1.5 h-1.5 rounded-full bg-red-500 shadow-[0_0_8px_rgba(239,68,68,1)] animate-pulse" />
-                                <h4 className="text-sm font-bold text-black dark:text-white uppercase tracking-wider">Suporte Técnico</h4>
-                            </div>
-                            <p className="text-sm font-mono text-black/80 dark:text-white/50 mb-1">+55 18 99721-6319</p>
-                            <p className="text-sm text-black/80 dark:text-white/50 font-light">suporte@t2rtecnologia.com.br</p>
-                        </div>
+                        {departments.slice(0, 3).map((dept: any, i: number) => {
+                            const colors = ['bg-t2r-green shadow-[0_0_8px_rgba(0,229,155,1)]', 'bg-white/50', 'bg-red-500 shadow-[0_0_8px_rgba(239,68,68,1)] animate-pulse'];
+                            const textColors = ['text-t2r-green', 'text-black/80 dark:text-white/50', 'text-black/80 dark:text-white/50'];
+                            return (
+                                <div key={i}>
+                                    <div className="flex items-center gap-2 mb-3">
+                                        <span className={`w-1.5 h-1.5 rounded-full ${colors[i % colors.length]}`} />
+                                        <h4 className="text-sm font-bold text-black dark:text-white uppercase tracking-wider">{dept.name}</h4>
+                                    </div>
+                                    <p className="text-sm font-mono text-black/80 dark:text-white/50 mb-1">{dept.whatsapp}</p>
+                                    <p className={`text-sm font-light ${textColors[i % textColors.length]}`}>{dept.email}</p>
+                                </div>
+                            );
+                        })}
                     </div>
                 </div>
 
@@ -82,25 +86,29 @@ export default function FaleConosco() {
                             </div>
                             
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <a href="https://wa.me/5518996131404" target="_blank" rel="noopener noreferrer" className="flex items-center p-6 rounded-2xl border border-black/10 dark:border-white/5 bg-white dark:bg-[#0a0a0a] hover:bg-black/[0.04] dark:hover:bg-white/[0.04] hover:border-t2r-green/30 transition-all group">
-                                    <div className="w-12 h-12 rounded-full bg-t2r-green/10 text-t2r-green flex items-center justify-center mr-5 flex-shrink-0 group-hover:scale-110 transition-transform shadow-[0_0_15px_rgba(0,229,155,0.15)]">
-                                        <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" /></svg>
-                                    </div>
-                                    <div>
-                                        <h4 className="text-sm font-bold text-black dark:text-white uppercase tracking-wider mb-1">Setor Comercial</h4>
-                                        <p className="text-sm text-t2r-green font-mono">+55 18 99613-1404</p>
-                                    </div>
-                                </a>
+                                {departments.slice(0, 2).map((dept: any, i: number) => {
+                                    const isSupport = dept.name.toLowerCase().includes('suporte');
+                                    const hoverClass = isSupport ? 'hover:border-red-500/30' : 'hover:border-t2r-green/30';
+                                    const iconBg = isSupport ? 'bg-red-500/10 text-red-500' : 'bg-t2r-green/10 text-t2r-green';
+                                    const shadow = isSupport ? 'shadow-[0_0_15px_rgba(239,68,68,0.15)]' : 'shadow-[0_0_15px_rgba(0,229,155,0.15)]';
+                                    const textClass = isSupport ? 'text-red-500' : 'text-t2r-green';
 
-                                <a href="https://wa.me/5518997216319" target="_blank" rel="noopener noreferrer" className="flex items-center p-6 rounded-2xl border border-black/10 dark:border-white/5 bg-white dark:bg-[#0a0a0a] hover:bg-black/[0.04] dark:hover:bg-white/[0.04] hover:border-red-500/30 transition-all group">
-                                    <div className="w-12 h-12 rounded-full bg-red-500/10 text-red-500 flex items-center justify-center mr-5 flex-shrink-0 group-hover:scale-110 transition-transform shadow-[0_0_15px_rgba(239,68,68,0.15)]">
-                                        <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M11.42 15.17l-5.1 5.1a2.121 2.121 0 01-3-3l5.1-5.1" /></svg>
-                                    </div>
-                                    <div>
-                                        <h4 className="text-sm font-bold text-black dark:text-white uppercase tracking-wider mb-1">Suporte Técnico</h4>
-                                        <p className="text-sm text-red-500 font-mono">+55 18 99721-6319</p>
-                                    </div>
-                                </a>
+                                    return (
+                                        <a key={i} href={dept.whatsapp ? `https://wa.me/${(dept.whatsapp || '').replace(/\D/g, '')}` : `mailto:${dept.email}`} target="_blank" rel="noopener noreferrer" className={`flex items-center p-6 rounded-2xl border border-black/10 dark:border-white/5 bg-white dark:bg-[#0a0a0a] hover:bg-black/[0.04] dark:hover:bg-white/[0.04] transition-all group ${hoverClass}`}>
+                                            <div className={`w-12 h-12 rounded-full flex items-center justify-center mr-5 flex-shrink-0 group-hover:scale-110 transition-transform ${iconBg} ${shadow}`}>
+                                                {isSupport ? (
+                                                    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M11.42 15.17l-5.1 5.1a2.121 2.121 0 01-3-3l5.1-5.1" /></svg>
+                                                ) : (
+                                                    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" /></svg>
+                                                )}
+                                            </div>
+                                            <div>
+                                                <h4 className="text-sm font-bold text-black dark:text-white uppercase tracking-wider mb-1">{dept.name}</h4>
+                                                <p className={`text-sm font-mono ${textClass}`}>{dept.whatsapp}</p>
+                                            </div>
+                                        </a>
+                                    );
+                                })}
                             </div>
                         </div>
 

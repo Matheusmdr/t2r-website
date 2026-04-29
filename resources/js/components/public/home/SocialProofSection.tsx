@@ -1,4 +1,4 @@
-import type { GoogleReview } from '@/types/t2r';
+import type { GoogleReview, ClientLogo } from '@/types/t2r';
 
 const REVIEWS: GoogleReview[] = [
     { author: 'Eduardo M.', rating: 5, text: 'Excelente suporte técnico e produtos de qualidade. O Kit PPK transformou a precisão dos meus levantamentos. Recomendo fortemente!', date: '3 meses atrás' },
@@ -6,17 +6,11 @@ const REVIEWS: GoogleReview[] = [
     { author: 'Renata S.', rating: 5, text: 'Investimento que se paga rapidamente. Com o PPK eliminei pontos de controle em 90% dos meus projetos. Produtividade nas alturas!', date: '1 mês atrás' },
 ];
 
-const CLIENT_LOGOS = [
-    '3dAgro', 'Aerogis', 'Aeropulv', 'Agronivel', 'Agroplan', 'Altais', 'Aya',
-    'Azzimute', 'BpBunge', 'Calitech', 'Chiavini e Santos', 'Construtora Rezende',
-    'Drones Solution', 'Elevar', 'Escala', 'Estacao Total', 'FMelhem', 'FlyMapping',
-    'Geoeletrik', 'Geometria', 'GeoSupply', 'Geosense', 'Hiparc', 'ICL',
-    'Kiriri', 'Latitude Geo', 'Lewale', 'ManoGeo', 'Mappear', 'MVGeo',
-    'Messen Cartografia', 'Metrica', 'Mundi', 'OwlDrones', 'Prop',
-    'Solucoes e Engenharia', 'Suntec', 'Tecplan', 'Unesp', 'Zayon',
-];
+interface SocialProofSectionProps {
+    clients?: ClientLogo[];
+}
 
-export default function SocialProofSection() {
+export default function SocialProofSection({ clients = [] }: SocialProofSectionProps) {
     return (
         <section className="relative w-full bg-white dark:bg-black py-24 sm:py-32 overflow-hidden selection:bg-yellow-400 selection:text-white dark:selection:text-black">
             <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
@@ -89,11 +83,17 @@ export default function SocialProofSection() {
                         <div className="pointer-events-none absolute top-0 left-0 z-10 h-full w-32 bg-gradient-to-r from-white dark:from-black to-transparent" />
                         <div className="pointer-events-none absolute top-0 right-0 z-10 h-full w-32 bg-gradient-to-l from-white dark:from-black to-transparent" />
                         <div className="flex animate-[marquee_60s_linear_infinite] items-center gap-8">
-                            {[...CLIENT_LOGOS, ...CLIENT_LOGOS].map((name, idx) => (
-                                <div key={idx} className="flex-shrink-0 rounded-full border border-black/10 dark:border-white/5 bg-black/5 dark:bg-white/5 px-6 py-3 hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
-                                    <span className="whitespace-nowrap text-sm font-bold tracking-wide text-black dark:text-white/40 hover:text-black dark:hover:text-white transition-colors">{name}</span>
-                                </div>
-                            ))}
+                            {clients.length > 0 ? (
+                                [...clients, ...clients, ...clients, ...clients].map((client, idx) => (
+                                    <div key={`${client.id}-${idx}`} className="flex-shrink-0 h-16 w-auto min-w-[120px] flex items-center justify-center rounded-full border border-black/10 dark:border-white/5 bg-black/5 dark:bg-white/5 px-6 py-3 hover:bg-black/10 dark:hover:bg-white/10 transition-colors overflow-hidden">
+                                        {client.logo ? (
+                                            <img src={client.logo} alt={client.name} className="h-full w-auto object-contain max-h-10 opacity-70 hover:opacity-100 transition-opacity" />
+                                        ) : (
+                                            <span className="whitespace-nowrap text-sm font-bold tracking-wide text-black dark:text-white/40 hover:text-black dark:hover:text-white transition-colors">{client.name}</span>
+                                        )}
+                                    </div>
+                                ))
+                            ) : null}
                         </div>
                     </div>
                 </div>

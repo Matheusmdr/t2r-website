@@ -2,14 +2,14 @@ import PublicLayout from '@/layouts/public-layout';
 import { Link } from '@inertiajs/react';
 import type { BlogPost } from '@/types/t2r';
 
-const MOCK_POSTS: BlogPost[] = [
-    { id: 1, title: 'Como a precisão do PPK revolucionou o mapeamento rural', slug: 'precisao-ppk-mapeamento-rural', content: '', cover_image: 'https://images.unsplash.com/photo-1586771107584-5666242484d8?q=80&w=800&auto=format&fit=crop', tags: ['PPK', 'Agricultura', 'Topografia'], embed_videos: null, is_published: true, created_at: '2024-03-12T10:00:00Z', updated_at: '2024-03-12T10:00:00Z' },
-    { id: 2, title: 'Base GNSS T2R vs Bases Tradicionais de Mercado', slug: 'base-gnss-t2r-vs-mercado', content: '', cover_image: 'https://images.unsplash.com/photo-1549488344-c6cc5b43deea?q=80&w=800&auto=format&fit=crop', tags: ['Equipamentos', 'Comparativo'], embed_videos: null, is_published: true, created_at: '2024-02-28T14:30:00Z', updated_at: '2024-02-28T14:30:00Z' },
-    { id: 3, title: 'Tutorial: Importando os dados do Geotagger no Metashape', slug: 'tutorial-geotagger-metashape', content: '', cover_image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop', tags: ['Tutorial', 'Software', 'Geotagger'], embed_videos: null, is_published: true, created_at: '2024-02-15T09:15:00Z', updated_at: '2024-02-15T09:15:00Z' },
-    { id: 4, title: 'Por que o CG (Centro de Gravidade) do drone importa?', slug: 'importancia-cg-drone', content: '', cover_image: 'https://images.unsplash.com/photo-1579820010410-c10411aaaa88?q=80&w=800&auto=format&fit=crop', tags: ['Engenharia', 'Drones'], embed_videos: null, is_published: true, created_at: '2024-01-20T16:45:00Z', updated_at: '2024-01-20T16:45:00Z' },
-];
+interface PaginatedPosts {
+    data: BlogPost[];
+    links: any[];
+    current_page: number;
+    last_page: number;
+}
 
-export default function Blog({ posts = MOCK_POSTS }: { posts?: BlogPost[] }) {
+export default function Blog({ posts }: { posts: PaginatedPosts }) {
     return (
         <PublicLayout seo={{ title: 'Blog T2R | Dicas, Engenharia e Topografia com Drones', description: 'Acompanhe nossos artigos sobre fotogrametria, georreferenciamento, PPK, RTK e tecnologia de mapeamento.', canonical: 'https://t2rtecnologia.com.br/blog' }}>
             
@@ -47,7 +47,7 @@ export default function Blog({ posts = MOCK_POSTS }: { posts?: BlogPost[] }) {
 
                     {/* Dark Grid */}
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {posts.map((post, idx) => (
+                        {posts.data.map((post, idx) => (
                             <Link key={post.id} href={`/blog/${post.slug}`} 
                                   style={{ animationDelay: `${1.2 + idx * 0.15}s` }}
                                   className="group flex flex-col rounded-[32px] border border-black/10 dark:border-white/5 bg-white dark:bg-[#0a0a0a] overflow-hidden hover:border-t2r-green/30 transition-all duration-500 shadow-md dark:shadow-[0_0_30px_rgba(0,0,0,0.5)] hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,229,155,0.1)] opacity-0 animate-[fade-in-up_0.8s_ease-out_forwards]">
@@ -55,10 +55,10 @@ export default function Blog({ posts = MOCK_POSTS }: { posts?: BlogPost[] }) {
                                 <div className="aspect-[16/10] overflow-hidden relative">
                                     <div className="absolute inset-0 bg-t2r-green/20 mix-blend-overlay z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                                     <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-black/80 to-transparent z-10 sm:hidden"></div>
-                                    <img src={post.cover_image} alt={post.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 filter grayscale group-hover:grayscale-0" />
+                                    <img src={post.cover_image || 'https://images.unsplash.com/photo-1586771107584-5666242484d8?q=80&w=800&auto=format&fit=crop'} alt={post.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 filter grayscale group-hover:grayscale-0" />
                                     
                                     <div className="absolute top-4 left-4 z-20 flex flex-wrap gap-2">
-                                        {post.tags.map((tag, i) => (
+                                        {post.tags?.map((tag, i) => (
                                             <span key={i} className="px-3 py-1 rounded-full bg-white dark:bg-black/60 backdrop-blur-md border border-black/20 dark:border-white/10 text-xs font-mono uppercase tracking-widest text-black dark:text-white shadow-sm">{tag}</span>
                                         ))}
                                     </div>

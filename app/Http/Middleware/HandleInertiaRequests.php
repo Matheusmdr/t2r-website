@@ -35,6 +35,14 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+        $footerData = \Illuminate\Support\Facades\Cache::remember('site_footer_data', 60 * 60 * 24, function () {
+            $settings = \App\Models\SiteSetting::first();
+            return [
+                'departments' => \App\Models\Department::orderBy('sort_order')->get()->toArray(),
+                'settings' => $settings ? $settings->toArray() : [],
+            ];
+        });
+
         return [
             ...parent::share($request),
             'name' => config('app.name'),
@@ -42,6 +50,7 @@ class HandleInertiaRequests extends Middleware
                 'user' => $request->user(),
             ],
             'sidebarOpen' => ! $request->hasCookie('sidebar_state') || $request->cookie('sidebar_state') === 'true',
+            'footerData' => $footerData,
         ];
     }
 }

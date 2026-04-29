@@ -6,8 +6,13 @@ import ApplicationsSection from '@/components/public/home/ApplicationsSection';
 import PrecisionTableSection from '@/components/public/home/PrecisionTableSection';
 import SocialProofSection from '@/components/public/home/SocialProofSection';
 import CtaSection from '@/components/public/CtaSection';
+import { ClientLogo } from '@/types/t2r';
 
-export default function Home() {
+interface HomeProps {
+    clients: ClientLogo[];
+}
+
+export default function Home({ clients }: HomeProps) {
     return (
         <PublicLayout
             seo={{
@@ -33,7 +38,7 @@ export default function Home() {
             <PrecisionTableSection />
 
             {/* Block F — Prova Social */}
-            <SocialProofSection />
+            <SocialProofSection clients={clients} />
 
             {/* Block G — CTA Final */}
             <CtaSection

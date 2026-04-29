@@ -72,7 +72,8 @@ class ProductController extends Controller
             'gallery_images' => 'nullable|array',
             'gallery_images.*' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'price' => 'required|numeric|min:0',
-            'tags' => 'nullable|array'
+            'tags' => 'nullable|array',
+            'tech_specs' => 'nullable|array'
         ]);
 
         $data = $validated;
@@ -105,7 +106,8 @@ class ProductController extends Controller
             'gallery_images' => 'nullable|array',
             'gallery_images.*' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'price' => 'required|numeric|min:0',
-            'tags' => 'nullable|array'
+            'tags' => 'nullable|array',
+            'tech_specs' => 'nullable|array'
         ]);
 
         $data = $validated;

@@ -1,8 +1,18 @@
+import { usePage } from '@inertiajs/react';
+import type { FooterData } from '@/types/t2r';
+
 export default function SupportButton() {
+    const { footerData } = usePage<{ footerData?: FooterData }>().props;
+    const departmentsArray = Array.isArray(footerData?.departments) ? footerData.departments : [];
+    const suporte = departmentsArray.find((d: any) => d?.name?.toLowerCase().includes('suporte')) 
+        || { whatsapp: '5518997216319' };
+
+    const whatsappUrl = `https://wa.me/${(suporte.whatsapp || '5518997216319').replace(/\D/g, '')}?text=Olá!%20Preciso%20de%20suporte%20técnico.`;
+
     return (
         <a
             id="support-float"
-            href="https://wa.me/5518997216319?text=Olá!%20Preciso%20de%20suporte%20técnico."
+            href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Suporte Técnico"

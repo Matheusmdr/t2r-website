@@ -1,8 +1,18 @@
+import { usePage } from '@inertiajs/react';
+import type { FooterData } from '@/types/t2r';
+
 export default function WhatsAppButton() {
+    const { footerData } = usePage<{ footerData?: FooterData }>().props;
+    const departmentsArray = Array.isArray(footerData?.departments) ? footerData.departments : [];
+    const comercial = departmentsArray.find((d: any) => d?.name?.toLowerCase().includes('comercial')) 
+        || { whatsapp: '5518996131404' };
+
+    const whatsappUrl = `https://wa.me/${(comercial.whatsapp || '5518996131404').replace(/\D/g, '')}?text=Olá!%20Gostaria%20de%20falar%20com%20um%20especialista.`;
+
     return (
         <a
             id="whatsapp-float"
-            href="https://wa.me/5518996131404?text=Olá!%20Gostaria%20de%20falar%20com%20um%20especialista."
+            href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Falar com especialista no WhatsApp"

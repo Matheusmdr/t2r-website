@@ -1,9 +1,9 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../wayfinder'
 /**
 * @see \App\Http\Controllers\Admin\ServiceController::index
- * @see app/Http/Controllers/Admin/ServiceController.php:21
- * @route '/admin/services'
- */
+* @see app/Http/Controllers/Admin/ServiceController.php:21
+* @route '/admin/services'
+*/
 export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: index.url(options),
     method: 'get',
@@ -16,72 +16,75 @@ index.definition = {
 
 /**
 * @see \App\Http\Controllers\Admin\ServiceController::index
- * @see app/Http/Controllers/Admin/ServiceController.php:21
- * @route '/admin/services'
- */
+* @see app/Http/Controllers/Admin/ServiceController.php:21
+* @route '/admin/services'
+*/
 index.url = (options?: RouteQueryOptions) => {
     return index.definition.url + queryParams(options)
 }
 
 /**
 * @see \App\Http\Controllers\Admin\ServiceController::index
- * @see app/Http/Controllers/Admin/ServiceController.php:21
- * @route '/admin/services'
- */
+* @see app/Http/Controllers/Admin/ServiceController.php:21
+* @route '/admin/services'
+*/
 index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: index.url(options),
     method: 'get',
 })
+
 /**
 * @see \App\Http\Controllers\Admin\ServiceController::index
- * @see app/Http/Controllers/Admin/ServiceController.php:21
- * @route '/admin/services'
- */
+* @see app/Http/Controllers/Admin/ServiceController.php:21
+* @route '/admin/services'
+*/
 index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: index.url(options),
     method: 'head',
 })
 
-    /**
+/**
 * @see \App\Http\Controllers\Admin\ServiceController::index
- * @see app/Http/Controllers/Admin/ServiceController.php:21
- * @route '/admin/services'
- */
-    const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-        action: index.url(options),
-        method: 'get',
-    })
+* @see app/Http/Controllers/Admin/ServiceController.php:21
+* @route '/admin/services'
+*/
+const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
 
-            /**
+/**
 * @see \App\Http\Controllers\Admin\ServiceController::index
- * @see app/Http/Controllers/Admin/ServiceController.php:21
- * @route '/admin/services'
- */
-        indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-            action: index.url(options),
-            method: 'get',
-        })
-            /**
+* @see app/Http/Controllers/Admin/ServiceController.php:21
+* @route '/admin/services'
+*/
+indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
 * @see \App\Http\Controllers\Admin\ServiceController::index
- * @see app/Http/Controllers/Admin/ServiceController.php:21
- * @route '/admin/services'
- */
-        indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-            action: index.url({
-                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-                            _method: 'HEAD',
-                            ...(options?.query ?? options?.mergeQuery ?? {}),
-                        }
-                    }),
-            method: 'get',
-        })
-    
-    index.form = indexForm
+* @see app/Http/Controllers/Admin/ServiceController.php:21
+* @route '/admin/services'
+*/
+indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+index.form = indexForm
+
 /**
 * @see \App\Http\Controllers\Admin\ServiceController::create
- * @see app/Http/Controllers/Admin/ServiceController.php:42
- * @route '/admin/services/create'
- */
+* @see app/Http/Controllers/Admin/ServiceController.php:42
+* @route '/admin/services/create'
+*/
 export const create = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: create.url(options),
     method: 'get',
@@ -94,72 +97,75 @@ create.definition = {
 
 /**
 * @see \App\Http\Controllers\Admin\ServiceController::create
- * @see app/Http/Controllers/Admin/ServiceController.php:42
- * @route '/admin/services/create'
- */
+* @see app/Http/Controllers/Admin/ServiceController.php:42
+* @route '/admin/services/create'
+*/
 create.url = (options?: RouteQueryOptions) => {
     return create.definition.url + queryParams(options)
 }
 
 /**
 * @see \App\Http\Controllers\Admin\ServiceController::create
- * @see app/Http/Controllers/Admin/ServiceController.php:42
- * @route '/admin/services/create'
- */
+* @see app/Http/Controllers/Admin/ServiceController.php:42
+* @route '/admin/services/create'
+*/
 create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: create.url(options),
     method: 'get',
 })
+
 /**
 * @see \App\Http\Controllers\Admin\ServiceController::create
- * @see app/Http/Controllers/Admin/ServiceController.php:42
- * @route '/admin/services/create'
- */
+* @see app/Http/Controllers/Admin/ServiceController.php:42
+* @route '/admin/services/create'
+*/
 create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: create.url(options),
     method: 'head',
 })
 
-    /**
+/**
 * @see \App\Http\Controllers\Admin\ServiceController::create
- * @see app/Http/Controllers/Admin/ServiceController.php:42
- * @route '/admin/services/create'
- */
-    const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-        action: create.url(options),
-        method: 'get',
-    })
+* @see app/Http/Controllers/Admin/ServiceController.php:42
+* @route '/admin/services/create'
+*/
+const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url(options),
+    method: 'get',
+})
 
-            /**
+/**
 * @see \App\Http\Controllers\Admin\ServiceController::create
- * @see app/Http/Controllers/Admin/ServiceController.php:42
- * @route '/admin/services/create'
- */
-        createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-            action: create.url(options),
-            method: 'get',
-        })
-            /**
+* @see app/Http/Controllers/Admin/ServiceController.php:42
+* @route '/admin/services/create'
+*/
+createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url(options),
+    method: 'get',
+})
+
+/**
 * @see \App\Http\Controllers\Admin\ServiceController::create
- * @see app/Http/Controllers/Admin/ServiceController.php:42
- * @route '/admin/services/create'
- */
-        createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-            action: create.url({
-                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-                            _method: 'HEAD',
-                            ...(options?.query ?? options?.mergeQuery ?? {}),
-                        }
-                    }),
-            method: 'get',
-        })
-    
-    create.form = createForm
+* @see app/Http/Controllers/Admin/ServiceController.php:42
+* @route '/admin/services/create'
+*/
+createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+create.form = createForm
+
 /**
 * @see \App\Http\Controllers\Admin\ServiceController::store
- * @see app/Http/Controllers/Admin/ServiceController.php:54
- * @route '/admin/services'
- */
+* @see app/Http/Controllers/Admin/ServiceController.php:54
+* @route '/admin/services'
+*/
 export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
@@ -172,49 +178,50 @@ store.definition = {
 
 /**
 * @see \App\Http\Controllers\Admin\ServiceController::store
- * @see app/Http/Controllers/Admin/ServiceController.php:54
- * @route '/admin/services'
- */
+* @see app/Http/Controllers/Admin/ServiceController.php:54
+* @route '/admin/services'
+*/
 store.url = (options?: RouteQueryOptions) => {
     return store.definition.url + queryParams(options)
 }
 
 /**
 * @see \App\Http\Controllers\Admin\ServiceController::store
- * @see app/Http/Controllers/Admin/ServiceController.php:54
- * @route '/admin/services'
- */
+* @see app/Http/Controllers/Admin/ServiceController.php:54
+* @route '/admin/services'
+*/
 store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
 })
 
-    /**
+/**
 * @see \App\Http\Controllers\Admin\ServiceController::store
- * @see app/Http/Controllers/Admin/ServiceController.php:54
- * @route '/admin/services'
- */
-    const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-        action: store.url(options),
-        method: 'post',
-    })
+* @see app/Http/Controllers/Admin/ServiceController.php:54
+* @route '/admin/services'
+*/
+const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
 
-            /**
+/**
 * @see \App\Http\Controllers\Admin\ServiceController::store
- * @see app/Http/Controllers/Admin/ServiceController.php:54
- * @route '/admin/services'
- */
-        storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-            action: store.url(options),
-            method: 'post',
-        })
-    
-    store.form = storeForm
+* @see app/Http/Controllers/Admin/ServiceController.php:54
+* @route '/admin/services'
+*/
+storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+store.form = storeForm
+
 /**
 * @see \App\Http\Controllers\Admin\ServiceController::edit
- * @see app/Http/Controllers/Admin/ServiceController.php:47
- * @route '/admin/services/edit/{service}'
- */
+* @see app/Http/Controllers/Admin/ServiceController.php:47
+* @route '/admin/services/edit/{service}'
+*/
 export const edit = (args: { service: number | { id: number } } | [service: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
@@ -227,31 +234,31 @@ edit.definition = {
 
 /**
 * @see \App\Http\Controllers\Admin\ServiceController::edit
- * @see app/Http/Controllers/Admin/ServiceController.php:47
- * @route '/admin/services/edit/{service}'
- */
+* @see app/Http/Controllers/Admin/ServiceController.php:47
+* @route '/admin/services/edit/{service}'
+*/
 edit.url = (args: { service: number | { id: number } } | [service: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { service: args }
     }
 
-            if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
-            args = { service: args.id }
-        }
-    
+    if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
+        args = { service: args.id }
+    }
+
     if (Array.isArray(args)) {
         args = {
-                    service: args[0],
-                }
+            service: args[0],
+        }
     }
 
     args = applyUrlDefaults(args)
 
     const parsedArgs = {
-                        service: typeof args.service === 'object'
-                ? args.service.id
-                : args.service,
-                }
+        service: typeof args.service === 'object'
+        ? args.service.id
+        : args.service,
+    }
 
     return edit.definition.url
             .replace('{service}', parsedArgs.service.toString())
@@ -260,63 +267,66 @@ edit.url = (args: { service: number | { id: number } } | [service: number | { id
 
 /**
 * @see \App\Http\Controllers\Admin\ServiceController::edit
- * @see app/Http/Controllers/Admin/ServiceController.php:47
- * @route '/admin/services/edit/{service}'
- */
+* @see app/Http/Controllers/Admin/ServiceController.php:47
+* @route '/admin/services/edit/{service}'
+*/
 edit.get = (args: { service: number | { id: number } } | [service: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
+
 /**
 * @see \App\Http\Controllers\Admin\ServiceController::edit
- * @see app/Http/Controllers/Admin/ServiceController.php:47
- * @route '/admin/services/edit/{service}'
- */
+* @see app/Http/Controllers/Admin/ServiceController.php:47
+* @route '/admin/services/edit/{service}'
+*/
 edit.head = (args: { service: number | { id: number } } | [service: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: edit.url(args, options),
     method: 'head',
 })
 
-    /**
+/**
 * @see \App\Http\Controllers\Admin\ServiceController::edit
- * @see app/Http/Controllers/Admin/ServiceController.php:47
- * @route '/admin/services/edit/{service}'
- */
-    const editForm = (args: { service: number | { id: number } } | [service: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-        action: edit.url(args, options),
-        method: 'get',
-    })
+* @see app/Http/Controllers/Admin/ServiceController.php:47
+* @route '/admin/services/edit/{service}'
+*/
+const editForm = (args: { service: number | { id: number } } | [service: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, options),
+    method: 'get',
+})
 
-            /**
+/**
 * @see \App\Http\Controllers\Admin\ServiceController::edit
- * @see app/Http/Controllers/Admin/ServiceController.php:47
- * @route '/admin/services/edit/{service}'
- */
-        editForm.get = (args: { service: number | { id: number } } | [service: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-            action: edit.url(args, options),
-            method: 'get',
-        })
-            /**
+* @see app/Http/Controllers/Admin/ServiceController.php:47
+* @route '/admin/services/edit/{service}'
+*/
+editForm.get = (args: { service: number | { id: number } } | [service: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, options),
+    method: 'get',
+})
+
+/**
 * @see \App\Http\Controllers\Admin\ServiceController::edit
- * @see app/Http/Controllers/Admin/ServiceController.php:47
- * @route '/admin/services/edit/{service}'
- */
-        editForm.head = (args: { service: number | { id: number } } | [service: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-            action: edit.url(args, {
-                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-                            _method: 'HEAD',
-                            ...(options?.query ?? options?.mergeQuery ?? {}),
-                        }
-                    }),
-            method: 'get',
-        })
-    
-    edit.form = editForm
+* @see app/Http/Controllers/Admin/ServiceController.php:47
+* @route '/admin/services/edit/{service}'
+*/
+editForm.head = (args: { service: number | { id: number } } | [service: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+edit.form = editForm
+
 /**
 * @see \App\Http\Controllers\Admin\ServiceController::update
- * @see app/Http/Controllers/Admin/ServiceController.php:77
- * @route '/admin/services/{service}'
- */
+* @see app/Http/Controllers/Admin/ServiceController.php:77
+* @route '/admin/services/{service}'
+*/
 export const update = (args: { service: number | { id: number } } | [service: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
@@ -329,31 +339,31 @@ update.definition = {
 
 /**
 * @see \App\Http\Controllers\Admin\ServiceController::update
- * @see app/Http/Controllers/Admin/ServiceController.php:77
- * @route '/admin/services/{service}'
- */
+* @see app/Http/Controllers/Admin/ServiceController.php:77
+* @route '/admin/services/{service}'
+*/
 update.url = (args: { service: number | { id: number } } | [service: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { service: args }
     }
 
-            if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
-            args = { service: args.id }
-        }
-    
+    if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
+        args = { service: args.id }
+    }
+
     if (Array.isArray(args)) {
         args = {
-                    service: args[0],
-                }
+            service: args[0],
+        }
     }
 
     args = applyUrlDefaults(args)
 
     const parsedArgs = {
-                        service: typeof args.service === 'object'
-                ? args.service.id
-                : args.service,
-                }
+        service: typeof args.service === 'object'
+        ? args.service.id
+        : args.service,
+    }
 
     return update.definition.url
             .replace('{service}', parsedArgs.service.toString())
@@ -362,50 +372,51 @@ update.url = (args: { service: number | { id: number } } | [service: number | { 
 
 /**
 * @see \App\Http\Controllers\Admin\ServiceController::update
- * @see app/Http/Controllers/Admin/ServiceController.php:77
- * @route '/admin/services/{service}'
- */
+* @see app/Http/Controllers/Admin/ServiceController.php:77
+* @route '/admin/services/{service}'
+*/
 update.put = (args: { service: number | { id: number } } | [service: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
 
-    /**
+/**
 * @see \App\Http\Controllers\Admin\ServiceController::update
- * @see app/Http/Controllers/Admin/ServiceController.php:77
- * @route '/admin/services/{service}'
- */
-    const updateForm = (args: { service: number | { id: number } } | [service: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-        action: update.url(args, {
-                    [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-                        _method: 'PUT',
-                        ...(options?.query ?? options?.mergeQuery ?? {}),
-                    }
-                }),
-        method: 'post',
-    })
+* @see app/Http/Controllers/Admin/ServiceController.php:77
+* @route '/admin/services/{service}'
+*/
+const updateForm = (args: { service: number | { id: number } } | [service: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
 
-            /**
+/**
 * @see \App\Http\Controllers\Admin\ServiceController::update
- * @see app/Http/Controllers/Admin/ServiceController.php:77
- * @route '/admin/services/{service}'
- */
-        updateForm.put = (args: { service: number | { id: number } } | [service: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-            action: update.url(args, {
-                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-                            _method: 'PUT',
-                            ...(options?.query ?? options?.mergeQuery ?? {}),
-                        }
-                    }),
-            method: 'post',
-        })
-    
-    update.form = updateForm
+* @see app/Http/Controllers/Admin/ServiceController.php:77
+* @route '/admin/services/{service}'
+*/
+updateForm.put = (args: { service: number | { id: number } } | [service: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+update.form = updateForm
+
 /**
 * @see \App\Http\Controllers\Admin\ServiceController::destroy
- * @see app/Http/Controllers/Admin/ServiceController.php:119
- * @route '/admin/services/delete/{service}'
- */
+* @see app/Http/Controllers/Admin/ServiceController.php:119
+* @route '/admin/services/delete/{service}'
+*/
 export const destroy = (args: { service: number | { id: number } } | [service: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
@@ -418,31 +429,31 @@ destroy.definition = {
 
 /**
 * @see \App\Http\Controllers\Admin\ServiceController::destroy
- * @see app/Http/Controllers/Admin/ServiceController.php:119
- * @route '/admin/services/delete/{service}'
- */
+* @see app/Http/Controllers/Admin/ServiceController.php:119
+* @route '/admin/services/delete/{service}'
+*/
 destroy.url = (args: { service: number | { id: number } } | [service: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { service: args }
     }
 
-            if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
-            args = { service: args.id }
-        }
-    
+    if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
+        args = { service: args.id }
+    }
+
     if (Array.isArray(args)) {
         args = {
-                    service: args[0],
-                }
+            service: args[0],
+        }
     }
 
     args = applyUrlDefaults(args)
 
     const parsedArgs = {
-                        service: typeof args.service === 'object'
-                ? args.service.id
-                : args.service,
-                }
+        service: typeof args.service === 'object'
+        ? args.service.id
+        : args.service,
+    }
 
     return destroy.definition.url
             .replace('{service}', parsedArgs.service.toString())
@@ -451,50 +462,51 @@ destroy.url = (args: { service: number | { id: number } } | [service: number | {
 
 /**
 * @see \App\Http\Controllers\Admin\ServiceController::destroy
- * @see app/Http/Controllers/Admin/ServiceController.php:119
- * @route '/admin/services/delete/{service}'
- */
+* @see app/Http/Controllers/Admin/ServiceController.php:119
+* @route '/admin/services/delete/{service}'
+*/
 destroy.delete = (args: { service: number | { id: number } } | [service: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
 
-    /**
+/**
 * @see \App\Http\Controllers\Admin\ServiceController::destroy
- * @see app/Http/Controllers/Admin/ServiceController.php:119
- * @route '/admin/services/delete/{service}'
- */
-    const destroyForm = (args: { service: number | { id: number } } | [service: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-        action: destroy.url(args, {
-                    [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-                        _method: 'DELETE',
-                        ...(options?.query ?? options?.mergeQuery ?? {}),
-                    }
-                }),
-        method: 'post',
-    })
+* @see app/Http/Controllers/Admin/ServiceController.php:119
+* @route '/admin/services/delete/{service}'
+*/
+const destroyForm = (args: { service: number | { id: number } } | [service: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
 
-            /**
+/**
 * @see \App\Http\Controllers\Admin\ServiceController::destroy
- * @see app/Http/Controllers/Admin/ServiceController.php:119
- * @route '/admin/services/delete/{service}'
- */
-        destroyForm.delete = (args: { service: number | { id: number } } | [service: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-            action: destroy.url(args, {
-                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-                            _method: 'DELETE',
-                            ...(options?.query ?? options?.mergeQuery ?? {}),
-                        }
-                    }),
-            method: 'post',
-        })
-    
-    destroy.form = destroyForm
+* @see app/Http/Controllers/Admin/ServiceController.php:119
+* @route '/admin/services/delete/{service}'
+*/
+destroyForm.delete = (args: { service: number | { id: number } } | [service: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+destroy.form = destroyForm
+
 /**
 * @see \App\Http\Controllers\Admin\ServiceController::deleteServiceImage
- * @see app/Http/Controllers/Admin/ServiceController.php:109
- * @route '/admin/services/delete-image/{service}'
- */
+* @see app/Http/Controllers/Admin/ServiceController.php:109
+* @route '/admin/services/delete-image/{service}'
+*/
 export const deleteServiceImage = (args: { service: number | { id: number } } | [service: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: deleteServiceImage.url(args, options),
     method: 'delete',
@@ -507,31 +519,31 @@ deleteServiceImage.definition = {
 
 /**
 * @see \App\Http\Controllers\Admin\ServiceController::deleteServiceImage
- * @see app/Http/Controllers/Admin/ServiceController.php:109
- * @route '/admin/services/delete-image/{service}'
- */
+* @see app/Http/Controllers/Admin/ServiceController.php:109
+* @route '/admin/services/delete-image/{service}'
+*/
 deleteServiceImage.url = (args: { service: number | { id: number } } | [service: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { service: args }
     }
 
-            if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
-            args = { service: args.id }
-        }
-    
+    if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
+        args = { service: args.id }
+    }
+
     if (Array.isArray(args)) {
         args = {
-                    service: args[0],
-                }
+            service: args[0],
+        }
     }
 
     args = applyUrlDefaults(args)
 
     const parsedArgs = {
-                        service: typeof args.service === 'object'
-                ? args.service.id
-                : args.service,
-                }
+        service: typeof args.service === 'object'
+        ? args.service.id
+        : args.service,
+    }
 
     return deleteServiceImage.definition.url
             .replace('{service}', parsedArgs.service.toString())
@@ -540,45 +552,46 @@ deleteServiceImage.url = (args: { service: number | { id: number } } | [service:
 
 /**
 * @see \App\Http\Controllers\Admin\ServiceController::deleteServiceImage
- * @see app/Http/Controllers/Admin/ServiceController.php:109
- * @route '/admin/services/delete-image/{service}'
- */
+* @see app/Http/Controllers/Admin/ServiceController.php:109
+* @route '/admin/services/delete-image/{service}'
+*/
 deleteServiceImage.delete = (args: { service: number | { id: number } } | [service: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: deleteServiceImage.url(args, options),
     method: 'delete',
 })
 
-    /**
+/**
 * @see \App\Http\Controllers\Admin\ServiceController::deleteServiceImage
- * @see app/Http/Controllers/Admin/ServiceController.php:109
- * @route '/admin/services/delete-image/{service}'
- */
-    const deleteServiceImageForm = (args: { service: number | { id: number } } | [service: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-        action: deleteServiceImage.url(args, {
-                    [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-                        _method: 'DELETE',
-                        ...(options?.query ?? options?.mergeQuery ?? {}),
-                    }
-                }),
-        method: 'post',
-    })
+* @see app/Http/Controllers/Admin/ServiceController.php:109
+* @route '/admin/services/delete-image/{service}'
+*/
+const deleteServiceImageForm = (args: { service: number | { id: number } } | [service: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: deleteServiceImage.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
 
-            /**
+/**
 * @see \App\Http\Controllers\Admin\ServiceController::deleteServiceImage
- * @see app/Http/Controllers/Admin/ServiceController.php:109
- * @route '/admin/services/delete-image/{service}'
- */
-        deleteServiceImageForm.delete = (args: { service: number | { id: number } } | [service: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-            action: deleteServiceImage.url(args, {
-                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-                            _method: 'DELETE',
-                            ...(options?.query ?? options?.mergeQuery ?? {}),
-                        }
-                    }),
-            method: 'post',
-        })
-    
-    deleteServiceImage.form = deleteServiceImageForm
+* @see app/Http/Controllers/Admin/ServiceController.php:109
+* @route '/admin/services/delete-image/{service}'
+*/
+deleteServiceImageForm.delete = (args: { service: number | { id: number } } | [service: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: deleteServiceImage.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+deleteServiceImage.form = deleteServiceImageForm
+
 const ServiceController = { index, create, store, edit, update, destroy, deleteServiceImage }
 
 export default ServiceController

@@ -16,13 +16,25 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ClientController;
-Route::get('/', function () { return Inertia::render('home'); })->name('public.home');
-Route::get('/ppk-para-drones', function () { return Inertia::render('ppk-para-drones'); })->name('public.ppk.index');
+Route::get('/', function () { 
+    $clients = \App\Models\Client::where('is_active', true)->get();
+    return Inertia::render('home', ['clients' => $clients]); 
+})->name('public.home');
+Route::get('/ppk-para-drones', function () {
+    $drones = \App\Models\Product::with('category')
+        ->whereHas('category', function($q) {
+            $q->where('slug', 'like', '%ppk%');
+        })
+        ->where('is_active', true)
+        ->get();
+    return Inertia::render('ppk-para-drones', ['drones' => $drones]);
+})->name('public.ppk.index');
 Route::get('/base-gnss', function () { return Inertia::render('base-gnss'); })->name('public.base-gnss.index');
 Route::get('/t2r-geotagger', function () { return Inertia::render('t2r-geotagger'); })->name('public.t2r-geotagger.index');
 Route::get('/metashape', function () { return Inertia::render('metashape'); })->name('public.metashape.index');
 Route::get('/sobre-nos', function () { return Inertia::render('sobre-nos'); })->name('public.sobre-nos.index');
-Route::get('/blog', function () { return Inertia::render('blog'); })->name('public.blog.index');
+Route::get('/blog', [PostController::class, 'indexPublic'])->name('public.blog.index');
+Route::get('/blog/{slug}', [PostController::class, 'showPublic'])->name('public.blog.show');
 Route::get('/fale-conosco', function () { return Inertia::render('fale-conosco'); })->name('public.fale-conosco.index');
 Route::get('/produtos', function () { return Inertia::render('produtos'); })->name('public.produtos.index');
 

@@ -59,16 +59,17 @@ const handleSystemThemeChange = (): void => {
 export function initializeTheme(): void {
   if (typeof window === 'undefined') return;
 
-  if (!localStorage.getItem('appearance')) {
-    localStorage.setItem('appearance', 'system');
-    setCookie('appearance', 'system');
-  }
+  // Force dark mode — original logic preserved for eventual reversion:
+  // if (!localStorage.getItem('appearance')) {
+  //   localStorage.setItem('appearance', 'system');
+  //   setCookie('appearance', 'system');
+  // }
+  // currentAppearance = getStoredAppearance();
+  // applyTheme(currentAppearance);
+  // mediaQuery()?.addEventListener('change', handleSystemThemeChange);
 
-  currentAppearance = getStoredAppearance();
-  applyTheme(currentAppearance);
-
-  // Set up system theme change listener
-  mediaQuery()?.addEventListener('change', handleSystemThemeChange);
+  currentAppearance = 'dark';
+  applyTheme('dark');
 }
 
 export function useAppearance() {
