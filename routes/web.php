@@ -29,6 +29,19 @@ Route::get('/ppk-para-drones', function () {
         ->get();
     return Inertia::render('ppk-para-drones', ['drones' => $drones]);
 })->name('public.ppk.index');
+Route::get('/ppk-para-drones/{slug}', function (string $slug) {
+    $product = \App\Models\Product::with('category')->where('slug', $slug)->where('is_active', true)->firstOrFail();
+    $relatedProducts = \App\Models\Product::with('category')
+        ->where('id', '!=', $product->id)
+        ->where('product_category_id', $product->product_category_id)
+        ->where('is_active', true)
+        ->take(4)
+        ->get();
+    return Inertia::render('ppk-produto', [
+        'product' => $product,
+        'relatedProducts' => $relatedProducts,
+    ]);
+})->name('public.ppk.show');
 Route::get('/base-gnss', function () { return Inertia::render('base-gnss'); })->name('public.base-gnss.index');
 Route::get('/t2r-geotagger', function () { return Inertia::render('t2r-geotagger'); })->name('public.t2r-geotagger.index');
 Route::get('/metashape', function () { return Inertia::render('metashape'); })->name('public.metashape.index');

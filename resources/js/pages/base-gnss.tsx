@@ -8,29 +8,42 @@ export default function BaseGnss() {
             {/* 1. HERO MASSIVE BLACK */}
             <section className="relative w-full bg-white dark:bg-black pt-40 pb-24 sm:pt-48 sm:pb-32 overflow-hidden selection:bg-t2r-green selection:text-white dark:selection:text-black border-b border-black/10 dark:border-white/5 opacity-0 animate-[fade-in_1s_ease-out_forwards]">
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(0,229,155,0.08),transparent_50%)] pointer-events-none" />
-                {/* Scan line removed — kept for reversion:
-                <div className="absolute left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-t2r-green/50 to-transparent top-1/3 animate-[scan_4s_ease-in-out_infinite] opacity-30" />
-                */}
                 
                 <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6">
-                    <div className="inline-flex items-center gap-2 rounded-full border border-t2r-green/30 bg-t2r-green/10 px-3 py-1 text-xs font-mono text-t2r-green mb-6 opacity-0 animate-[fade-in-up_0.8s_ease-out_0.2s_forwards]">
-                         HOME / PRODUTOS / BASE GNSS
-                    </div>
-                    <h1 className="text-5xl sm:text-7xl font-black text-black dark:text-white tracking-tighter mb-8 leading-[0.9] opacity-0 animate-[fade-in-up_1s_ease-out_0.4s_forwards]">
-                        BASE PPK L1/L2 <br/>
-                        <span className="text-t2r-green drop-shadow-[0_0_25px_rgba(0,229,155,0.4)]">ROVER RTK NTRIP</span>
-                    </h1>
-                    <p className="max-w-2xl text-xl text-black/80 dark:text-white/50 font-light leading-relaxed mb-10 opacity-0 animate-[fade-in-up_1s_ease-out_0.6s_forwards]">
-                        Solução profissional extrema para RTK, PPK, topografia e geodésia. Alta precisão com operação sem fio via Bluetooth e compatibilidade nativa com serviços de correção NTRIP.
-                    </p>
-                    <div className="flex flex-wrap gap-4 opacity-0 animate-[fade-in-up_1s_ease-out_0.8s_forwards]">
-                        <a href="https://wa.me/5518996131404?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20a%20Base%20GNSS." target="_blank" rel="noopener noreferrer" 
-                           className="rounded-full bg-black text-white dark:bg-white dark:text-black px-8 py-3.5 font-bold text-sm transition-transform hover:scale-105 shadow-lg dark:shadow-[0_0_20px_rgba(255,255,255,0.1)]">
-                           Solicitar Orçamento
-                        </a>
-                        <a href="#especificacoes" className="rounded-full border border-black/30 dark:border-white/20 bg-black/5 dark:bg-white/5 backdrop-blur-md px-8 py-3.5 font-bold text-sm text-black dark:text-white transition-all hover:bg-black/10 dark:hover:bg-white/10 hover:border-black/20 dark:hover:border-white/40">
-                            Ver Especificações
-                        </a>
+                    <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+                        {/* Text Side */}
+                        <div className="w-full lg:w-1/2">
+                            <div className="inline-flex items-center gap-2 rounded-full border border-t2r-green/30 bg-t2r-green/10 px-3 py-1 text-xs font-mono text-t2r-green mb-6 opacity-0 animate-[fade-in-up_0.8s_ease-out_0.2s_forwards]">
+                                 HOME / PRODUTOS / BASE GNSS
+                            </div>
+                            <h1 className="text-5xl sm:text-7xl font-black text-black dark:text-white tracking-tighter mb-8 leading-[0.9] opacity-0 animate-[fade-in-up_1s_ease-out_0.4s_forwards]">
+                                BASE PPK L1/L2 <br/>
+                                <span className="text-t2r-green drop-shadow-[0_0_25px_rgba(0,229,155,0.4)]">ROVER RTK NTRIP</span>
+                            </h1>
+                            <p className="max-w-2xl text-xl text-black/80 dark:text-white/50 font-light leading-relaxed mb-10 opacity-0 animate-[fade-in-up_1s_ease-out_0.6s_forwards]">
+                                Solução profissional extrema para RTK, PPK, topografia e geodésia. Alta precisão com operação sem fio via Bluetooth e compatibilidade nativa com serviços de correção NTRIP.
+                            </p>
+                            <div className="flex flex-wrap gap-4 opacity-0 animate-[fade-in-up_1s_ease-out_0.8s_forwards]">
+                                <a href="https://wa.me/5518996131404?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20a%20Base%20GNSS." target="_blank" rel="noopener noreferrer" 
+                                   className="rounded-full bg-black text-white dark:bg-white dark:text-black px-8 py-3.5 font-bold text-sm transition-transform hover:scale-105 shadow-lg dark:shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+                                   Solicitar Orçamento
+                                </a>
+                                <a href="#especificacoes" className="rounded-full border border-black/30 dark:border-white/20 bg-black/5 dark:bg-white/5 backdrop-blur-md px-8 py-3.5 font-bold text-sm text-black dark:text-white transition-all hover:bg-black/10 dark:hover:bg-white/10 hover:border-black/20 dark:hover:border-white/40">
+                                    Ver Especificações
+                                </a>
+                            </div>
+                        </div>
+
+                        {/* Image Side */}
+                        <div className="w-full lg:w-1/2 flex-shrink-0 opacity-0 animate-[fade-in-up_1s_ease-out_0.6s_forwards]">
+                            <div className="group relative rounded-3xl overflow-hidden bg-gradient-to-br from-white/[0.02] to-transparent border border-black/10 dark:border-white/5 transition-all duration-700 hover:border-t2r-green/20 hover:shadow-[0_20px_80px_rgba(0,229,155,0.06)]">
+                                <img
+                                    src="/images/base-gnss-hero.png"
+                                    alt="Base GNSS T2R — Receptor Geodésico Profissional"
+                                    className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
+                                />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>

@@ -82,14 +82,14 @@ export default function SocialProofSection({ clients = [] }: SocialProofSectionP
                     <div className="relative overflow-hidden w-full max-w-5xl mx-auto">
                         <div className="pointer-events-none absolute top-0 left-0 z-10 h-full w-32 bg-gradient-to-r from-white dark:from-black to-transparent" />
                         <div className="pointer-events-none absolute top-0 right-0 z-10 h-full w-32 bg-gradient-to-l from-white dark:from-black to-transparent" />
-                        <div className="flex animate-[marquee_60s_linear_infinite] items-center gap-8">
+                        <div className="flex animate-[marquee_60s_linear_infinite] items-center gap-6 sm:gap-8">
                             {clients.length > 0 ? (
                                 [...clients, ...clients, ...clients, ...clients].map((client, idx) => (
-                                    <div key={`${client.id}-${idx}`} className="flex-shrink-0 h-16 w-auto min-w-[120px] flex items-center justify-center rounded-full border border-black/10 dark:border-white/5 bg-black/5 dark:bg-white/5 px-6 py-3 hover:bg-black/10 dark:hover:bg-white/10 transition-colors overflow-hidden">
+                                    <div key={`${client.id}-${idx}`} className="flex-shrink-0 w-48 h-24 sm:w-56 sm:h-28 flex items-center justify-center rounded-2xl border border-black/10 dark:border-white/10 bg-white p-2 sm:p-4 transition-all">
                                         {client.logo ? (
-                                            <img src={client.logo} alt={client.name} className="h-full w-auto object-contain max-h-10 opacity-70 hover:opacity-100 transition-opacity" />
+                                            <img src={client.logo} alt={client.name} className="w-full h-full object-contain" />
                                         ) : (
-                                            <span className="whitespace-nowrap text-sm font-bold tracking-wide text-black dark:text-white/40 hover:text-black dark:hover:text-white transition-colors">{client.name}</span>
+                                            <span className="whitespace-nowrap text-sm sm:text-base font-bold tracking-wide text-black">{client.name}</span>
                                         )}
                                     </div>
                                 ))

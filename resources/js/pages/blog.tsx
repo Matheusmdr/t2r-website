@@ -36,14 +36,7 @@ export default function Blog({ posts }: { posts: PaginatedPosts }) {
             <section className="relative w-full bg-[#f7f7f7] dark:bg-[#050505] py-24 min-h-[50vh] opacity-0 animate-[fade-in_1s_ease-out_0.8s_forwards]">
                 <div className="mx-auto max-w-[1400px] px-4 sm:px-6">
                     
-                    {/* Dark Tag Filter */}
-                    <div className="flex gap-3 mb-16 overflow-x-auto pb-4 scrollbar-hide opacity-0 animate-[fade-in-up_0.8s_ease-out_1s_forwards]">
-                        {['Todos', 'PPK', 'Tutorial', 'Engenharia', 'Equipamentos'].map((cat, idx) => (
-                            <button key={cat} className={`flex-shrink-0 px-6 py-2.5 rounded-full border ${idx === 0 ? 'bg-t2r-green/10 border-t2r-green/30 text-t2r-green' : 'border-black/20 dark:border-white/10 bg-black/5 dark:bg-white/5 text-black/80 dark:text-white/50 hover:bg-black/10 dark:hover:bg-white/10 hover:text-black dark:hover:text-white hover:border-black/20 dark:hover:border-white/30'} text-xs font-mono uppercase tracking-widest transition-colors`}>
-                                {cat}
-                            </button>
-                        ))}
-                    </div>
+                    {/* Removed Dark Tag Filter */}
 
                     {/* Dark Grid */}
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -89,6 +82,36 @@ export default function Blog({ posts }: { posts: PaginatedPosts }) {
                     </div>
 
                 </div>
+
+                {/* Pagination */}
+                {posts.last_page > 1 && (
+                    <div className="mx-auto max-w-[1400px] px-4 sm:px-6 mt-16 flex flex-wrap items-center justify-center gap-2 opacity-0 animate-[fade-in-up_0.8s_ease-out_0.5s_forwards]">
+                        {posts.links.map((link, idx) => {
+                            const isPrevious = link.label.includes('Previous');
+                            const isNext = link.label.includes('Next');
+                            const label = isPrevious ? '&laquo; Anterior' : isNext ? 'Próxima &raquo;' : link.label;
+                            
+                            return link.url ? (
+                                <Link
+                                    key={idx}
+                                    href={link.url}
+                                    className={`min-w-[40px] h-10 px-4 flex items-center justify-center rounded-full border text-xs font-mono font-bold transition-all ${
+                                        link.active
+                                            ? 'bg-t2r-green text-black border-t2r-green shadow-[0_0_15px_rgba(0,229,155,0.4)]'
+                                            : 'border-black/20 dark:border-white/10 bg-black/5 dark:bg-white/5 text-black/80 dark:text-white/50 hover:bg-black/10 dark:hover:bg-white/10 hover:text-black dark:hover:text-white hover:border-black/30 dark:hover:border-white/30'
+                                    }`}
+                                    dangerouslySetInnerHTML={{ __html: label }}
+                                />
+                            ) : (
+                                <span
+                                    key={idx}
+                                    className="min-w-[40px] h-10 px-4 flex items-center justify-center rounded-full border border-black/10 dark:border-white/5 bg-transparent text-black/30 dark:text-white/20 text-xs font-mono cursor-not-allowed"
+                                    dangerouslySetInnerHTML={{ __html: label }}
+                                />
+                            );
+                        })}
+                    </div>
+                )}
             </section>
         </PublicLayout>
     );

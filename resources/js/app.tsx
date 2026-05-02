@@ -14,11 +14,13 @@ createInertiaApp({
             // Public pages — layout managed by each page
             case name === 'home':
             case name === 'ppk-para-drones':
+            case name === 'ppk-produto':
             case name === 'base-gnss':
             case name === 't2r-geotagger':
             case name === 'metashape':
             case name === 'sobre-nos':
             case name === 'blog':
+            case name === 'blog-post':
             case name === 'fale-conosco':
             case name === 'produtos':
                 return null;

@@ -81,7 +81,7 @@ export default function FaleConosco() {
                         <div className="lg:col-span-7 flex flex-col gap-8">
                             <div className="rounded-[32px] overflow-hidden border border-black/20 dark:border-white/10 bg-white dark:bg-black aspect-video p-1 group">
                                 <div className="w-full h-full rounded-[28px] overflow-hidden relative dark:grayscale dark:invert dark:opacity-70 group-hover:dark:grayscale-0 group-hover:dark:invert-0 group-hover:dark:opacity-100 transition-all duration-700">
-                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3694.2753!2d-51.3889!3d-22.1259!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDA3JzMzLjIiUyA1McKwMjMnMjAuMCJX!5e0!3m2!1spt-BR!2sbr!4v1&q=Avenida+Da+Saudade+535+Presidente+Prudente+SP" width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Localização T2R" />
+                                    <iframe src="https://maps.google.com/maps?q=Avenida%20Da%20Saudade%2C%20535%2C%20Sala%2086%2C%20Parque%20Empresarial%2C%20Presidente%20Prudente%2FSP&t=m&z=15&output=embed&iwloc=near" width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Avenida Da Saudade, 535, Sala 86, Parque Empresarial, Presidente Prudente/SP" aria-label="Avenida Da Saudade, 535, Sala 86, Parque Empresarial, Presidente Prudente/SP" />
                                 </div>
                             </div>
                             

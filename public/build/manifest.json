@@ -6,8 +6,8 @@
       "_jsx-runtime-DC_atMmC.js"
     ]
   },
-  "_PrecisionTableSection-BoP12c8U.js": {
-    "file": "assets/PrecisionTableSection-BoP12c8U.js",
+  "_PrecisionTableSection-ClOajH3R.js": {
+    "file": "assets/PrecisionTableSection-ClOajH3R.js",
     "name": "PrecisionTableSection",
     "imports": [
       "_jsx-runtime-DC_atMmC.js"
@@ -129,8 +129,8 @@
       "_input-D8FhTtnV.js"
     ]
   },
-  "_create-and-edit-product-DVJfRsPn.js": {
-    "file": "assets/create-and-edit-product-DVJfRsPn.js",
+  "_create-and-edit-product-CBaScB2_.js": {
+    "file": "assets/create-and-edit-product-CBaScB2_.js",
     "name": "create-and-edit-product",
     "imports": [
       "_jsx-runtime-DC_atMmC.js",
@@ -140,6 +140,8 @@
       "_select-KsRGYV8i.js",
       "_button-Qd8guFyz.js",
       "_upload-image-field-DtUPTqdG.js",
+      "_plus-BRwRG1Js.js",
+      "_trash-2-YvQvt1hk.js",
       "_input-D8FhTtnV.js"
     ]
   },
@@ -452,8 +454,8 @@
       "_button-Qd8guFyz.js"
     ]
   },
-  "_public-layout-BlEAcNi6.js": {
-    "file": "assets/public-layout-BlEAcNi6.js",
+  "_public-layout-Dtw1NaN7.js": {
+    "file": "assets/public-layout-Dtw1NaN7.js",
     "name": "public-layout",
     "imports": [
       "_jsx-runtime-DC_atMmC.js"
@@ -1310,7 +1312,7 @@
     "src": "node_modules/@fontsource/cabin/files/cabin-vietnamese-400-normal.woff2"
   },
   "resources/css/app.css": {
-    "file": "assets/app-kyuMeYrU.css",
+    "file": "assets/app-Chbl1Z2L.css",
     "name": "app",
     "names": [
       "app.css"
@@ -1327,7 +1329,7 @@
     ]
   },
   "resources/js/app.tsx": {
-    "file": "assets/app-0wypoKr8.js",
+    "file": "assets/app-DRXIpOQ7.js",
     "name": "app",
     "src": "resources/js/app.tsx",
     "isEntry": true,
@@ -1370,12 +1372,14 @@
       "resources/js/pages/auth/two-factor-challenge.tsx",
       "resources/js/pages/auth/verify-email.tsx",
       "resources/js/pages/base-gnss.tsx",
+      "resources/js/pages/blog-post.tsx",
       "resources/js/pages/blog.tsx",
       "resources/js/pages/dashboard.tsx",
       "resources/js/pages/fale-conosco.tsx",
       "resources/js/pages/home.tsx",
       "resources/js/pages/metashape.tsx",
       "resources/js/pages/ppk-para-drones.tsx",
+      "resources/js/pages/ppk-produto.tsx",
       "resources/js/pages/produtos.tsx",
       "resources/js/pages/sobre-nos.tsx",
       "resources/js/pages/t2r-geotagger.tsx",
@@ -1541,25 +1545,25 @@
     ]
   },
   "resources/js/pages/admin/products/create.tsx": {
-    "file": "assets/create-BgH0_aCI.js",
+    "file": "assets/create-nOv2j3A_.js",
     "name": "create",
     "src": "resources/js/pages/admin/products/create.tsx",
     "isDynamicEntry": true,
     "imports": [
       "_jsx-runtime-DC_atMmC.js",
       "_app-layout-BdJTK917.js",
-      "_create-and-edit-product-DVJfRsPn.js"
+      "_create-and-edit-product-CBaScB2_.js"
     ]
   },
   "resources/js/pages/admin/products/edit.tsx": {
-    "file": "assets/edit-B17r-T7c.js",
+    "file": "assets/edit-CNmn6dFZ.js",
     "name": "edit",
     "src": "resources/js/pages/admin/products/edit.tsx",
     "isDynamicEntry": true,
     "imports": [
       "_jsx-runtime-DC_atMmC.js",
       "_app-layout-BdJTK917.js",
-      "_create-and-edit-product-DVJfRsPn.js"
+      "_create-and-edit-product-CBaScB2_.js"
     ]
   },
   "resources/js/pages/admin/products/index.tsx": {
@@ -1780,28 +1784,38 @@
     ]
   },
   "resources/js/pages/base-gnss.tsx": {
-    "file": "assets/base-gnss-D_nI17v0.js",
+    "file": "assets/base-gnss-jZpPnqiY.js",
     "name": "base-gnss",
     "src": "resources/js/pages/base-gnss.tsx",
     "isDynamicEntry": true,
     "imports": [
       "_jsx-runtime-DC_atMmC.js",
       "_CtaSection-CoISF1MN.js",
-      "_public-layout-BlEAcNi6.js"
+      "_public-layout-Dtw1NaN7.js"
+    ]
+  },
+  "resources/js/pages/blog-post.tsx": {
+    "file": "assets/blog-post-C8PJvwPW.js",
+    "name": "blog-post",
+    "src": "resources/js/pages/blog-post.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_jsx-runtime-DC_atMmC.js",
+      "_public-layout-Dtw1NaN7.js"
     ]
   },
   "resources/js/pages/blog.tsx": {
-    "file": "assets/blog-CRimg9m3.js",
+    "file": "assets/blog-Xj9rBl31.js",
     "name": "blog",
     "src": "resources/js/pages/blog.tsx",
     "isDynamicEntry": true,
     "imports": [
       "_jsx-runtime-DC_atMmC.js",
-      "_public-layout-BlEAcNi6.js"
+      "_public-layout-Dtw1NaN7.js"
     ]
   },
   "resources/js/pages/dashboard.tsx": {
-    "file": "assets/dashboard-D0cNJRoz.js",
+    "file": "assets/dashboard-yzCdhti3.js",
     "name": "dashboard",
     "src": "resources/js/pages/dashboard.tsx",
     "isDynamicEntry": true,
@@ -1810,85 +1824,96 @@
     ]
   },
   "resources/js/pages/fale-conosco.tsx": {
-    "file": "assets/fale-conosco-CnJjT2Mk.js",
+    "file": "assets/fale-conosco-Pt17K3I8.js",
     "name": "fale-conosco",
     "src": "resources/js/pages/fale-conosco.tsx",
     "isDynamicEntry": true,
     "imports": [
       "_jsx-runtime-DC_atMmC.js",
-      "_public-layout-BlEAcNi6.js"
+      "_public-layout-Dtw1NaN7.js"
     ]
   },
   "resources/js/pages/home.tsx": {
-    "file": "assets/home-DtozkBXv.js",
+    "file": "assets/home-C91xhn19.js",
     "name": "home",
     "src": "resources/js/pages/home.tsx",
     "isDynamicEntry": true,
     "imports": [
       "_jsx-runtime-DC_atMmC.js",
       "_CtaSection-CoISF1MN.js",
-      "_public-layout-BlEAcNi6.js",
-      "_PrecisionTableSection-BoP12c8U.js"
+      "_public-layout-Dtw1NaN7.js",
+      "_PrecisionTableSection-ClOajH3R.js"
     ]
   },
   "resources/js/pages/metashape.tsx": {
-    "file": "assets/metashape-CJ7mMVT0.js",
+    "file": "assets/metashape-Cw5IP9lM.js",
     "name": "metashape",
     "src": "resources/js/pages/metashape.tsx",
     "isDynamicEntry": true,
     "imports": [
       "_jsx-runtime-DC_atMmC.js",
       "_CtaSection-CoISF1MN.js",
-      "_public-layout-BlEAcNi6.js"
+      "_public-layout-Dtw1NaN7.js"
     ]
   },
   "resources/js/pages/ppk-para-drones.tsx": {
-    "file": "assets/ppk-para-drones-B3OuNt8L.js",
+    "file": "assets/ppk-para-drones-BtdS8UbP.js",
     "name": "ppk-para-drones",
     "src": "resources/js/pages/ppk-para-drones.tsx",
     "isDynamicEntry": true,
     "imports": [
       "_jsx-runtime-DC_atMmC.js",
       "_CtaSection-CoISF1MN.js",
-      "_public-layout-BlEAcNi6.js",
-      "_PrecisionTableSection-BoP12c8U.js"
+      "_public-layout-Dtw1NaN7.js",
+      "_PrecisionTableSection-ClOajH3R.js"
+    ]
+  },
+  "resources/js/pages/ppk-produto.tsx": {
+    "file": "assets/ppk-produto-z_MLgF0A.js",
+    "name": "ppk-produto",
+    "src": "resources/js/pages/ppk-produto.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_jsx-runtime-DC_atMmC.js",
+      "_CtaSection-CoISF1MN.js",
+      "_public-layout-Dtw1NaN7.js"
     ]
   },
   "resources/js/pages/produtos.tsx": {
-    "file": "assets/produtos-DNAh5cHR.js",
+    "file": "assets/produtos-mAr5MX2C.js",
     "name": "produtos",
     "src": "resources/js/pages/produtos.tsx",
     "isDynamicEntry": true,
     "imports": [
       "_jsx-runtime-DC_atMmC.js",
       "_CtaSection-CoISF1MN.js",
-      "_public-layout-BlEAcNi6.js"
+      "_public-layout-Dtw1NaN7.js"
     ]
   },
   "resources/js/pages/sobre-nos.tsx": {
-    "file": "assets/sobre-nos-ceyJt0K4.js",
+    "file": "assets/sobre-nos-DAXD9dHE.js",
     "name": "sobre-nos",
     "src": "resources/js/pages/sobre-nos.tsx",
     "isDynamicEntry": true,
     "imports": [
       "_jsx-runtime-DC_atMmC.js",
       "_CtaSection-CoISF1MN.js",
-      "_public-layout-BlEAcNi6.js"
+      "_public-layout-Dtw1NaN7.js"
     ]
   },
   "resources/js/pages/t2r-geotagger.tsx": {
-    "file": "assets/t2r-geotagger-BEvGPG9d.js",
+    "file": "assets/t2r-geotagger-QHibrK_A.js",
     "name": "t2r-geotagger",
     "src": "resources/js/pages/t2r-geotagger.tsx",
     "isDynamicEntry": true,
     "imports": [
       "_jsx-runtime-DC_atMmC.js",
       "_CtaSection-CoISF1MN.js",
-      "_public-layout-BlEAcNi6.js"
+      "_public-layout-Dtw1NaN7.js"
     ]
   },
   "resources/js/pages/welcome.tsx": {
-    "file": "assets/welcome-BIagA1ZD.js",
+    "file": "assets/welcome-CW_iHLP9.js",
     "name": "welcome",
     "src": "resources/js/pages/welcome.tsx",
     "isDynamicEntry": true,

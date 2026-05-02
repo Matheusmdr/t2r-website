@@ -1,6 +1,7 @@
 import PublicLayout from '@/layouts/public-layout';
 import PrecisionTableSection from '@/components/public/home/PrecisionTableSection';
 import CtaSection from '@/components/public/CtaSection';
+import { Link } from '@inertiajs/react';
 import { Product } from '@/types/t2r';
 
 const SPEC_LABELS: Record<string, string> = { antena: 'Antena', constelacoes: 'Constelações', frequencias: 'Nº de Frequências', canais: 'Nº Canais', armazenamento: 'Armazenamento', consumo: 'Consumo Energético', linhaBase: 'Distância Linha de Base', tempoFixo: 'Tempo para Status Fixo' };
@@ -66,11 +67,11 @@ export default function PpkParaDrones({ drones }: Props) {
 
                                         {/* Image Side */}
                                         <div className="w-full lg:w-1/2 flex-shrink-0">
-                                            <div className="group relative rounded-3xl overflow-hidden bg-gradient-to-br from-white/[0.02] to-transparent border border-white/5 p-6 sm:p-10 transition-all duration-700 hover:border-white/10 hover:shadow-[0_20px_80px_rgba(0,229,155,0.06)]">
+                                            <div className="group relative rounded-3xl overflow-hidden bg-gradient-to-br from-white/[0.02] to-transparent border border-white/5 transition-all duration-700 hover:border-white/10 hover:shadow-[0_20px_80px_rgba(0,229,155,0.06)]">
                                                 <img
                                                     src={drone.cover_image}
                                                     alt={drone.title}
-                                                    className="w-full h-auto max-h-[400px] object-contain transition-transform duration-700 group-hover:scale-105"
+                                                    className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
                                                 />
                                             </div>
                                         </div>
@@ -108,17 +109,25 @@ export default function PpkParaDrones({ drones }: Props) {
                                                     ))}
                                             </div>
 
-                                            {/* CTA */}
-                                            <a
-                                                href={`https://wa.me/5518996131404?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Kit%20PPK%20para%20${encodeURIComponent(drone.title)}.`}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="group/btn inline-flex items-center gap-3 rounded-full bg-white text-black px-7 py-3.5 font-bold text-sm transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.05)] hover:shadow-[0_0_30px_rgba(255,255,255,0.15)]"
-                                            >
-                                                <svg className="h-4 w-4 text-t2r-green" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" /><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.75.75 0 00.917.918l4.462-1.494A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.94 9.94 0 01-5.39-1.583l-.39-.236-3.296 1.103 1.104-3.29-.248-.395A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" /></svg>
-                                                <span>Solicitar Orçamento</span>
-                                                <svg className="h-4 w-4 transition-transform group-hover/btn:translate-x-1" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
-                                            </a>
+                                            {/* CTAs */}
+                                            <div className="flex flex-wrap gap-4">
+                                                <Link
+                                                    href={`/ppk-para-drones/${drone.slug}`}
+                                                    className="group/btn inline-flex items-center gap-3 rounded-full bg-white text-black px-7 py-3.5 font-bold text-sm transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.05)] hover:shadow-[0_0_30px_rgba(255,255,255,0.15)]"
+                                                >
+                                                    <span>Ver Detalhes</span>
+                                                    <svg className="h-4 w-4 transition-transform group-hover/btn:translate-x-1" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+                                                </Link>
+                                                <a
+                                                    href={`https://wa.me/5518996131404?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Kit%20PPK%20para%20${encodeURIComponent(drone.title)}.`}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="group/btn inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/5 backdrop-blur-md text-white px-7 py-3.5 font-bold text-sm transition-all hover:scale-105 active:scale-95 hover:bg-white/10 hover:border-white/40"
+                                                >
+                                                    <svg className="h-4 w-4 text-t2r-green" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" /><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.75.75 0 00.917.918l4.462-1.494A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.94 9.94 0 01-5.39-1.583l-.39-.236-3.296 1.103 1.104-3.29-.248-.395A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" /></svg>
+                                                    <span>Solicitar Orçamento</span>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
